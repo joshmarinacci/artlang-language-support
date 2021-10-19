@@ -1,6 +1,6 @@
 # artlang-language-support README
 
-This is the README for your extension "artlang-language-support". After writing up a brief description, we recommend including the following sections.
+This is the art lang extension
 
 ## Features
 

@@ -1,8 +1,12 @@
 {
     "name": "artlang-language-support",
     "displayName": "artlang-language-support",
-    "description": "",
+    "description": "basic extension for the artlang",
     "version": "0.0.1",
+    "publisher": "joshmarinacci",
+    "repository": {
+        "url": "https://github.com/joshmarinacci/artlang-language-support"
+    },
     "engines": {
         "vscode": "^1.61.0"
     },
@@ -10,16 +14,25 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "artlang",
-            "aliases": ["ArtLang", "artlang"],
-            "extensions": [".art"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "artlang",
-            "scopeName": "source.artlang",
-            "path": "./syntaxes/artlang.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "artlang",
+                "aliases": [
+                    "ArtLang",
+                    "artlang"
+                ],
+                "extensions": [
+                    ".art"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "artlang",
+                "scopeName": "source.artlang",
+                "path": "./syntaxes/artlang.tmLanguage.json"
+            }
+        ]
     }
 }
