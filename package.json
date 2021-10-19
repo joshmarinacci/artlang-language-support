@@ -1,0 +1,25 @@
+{
+    "name": "artlang-language-support",
+    "displayName": "artlang-language-support",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.61.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "artlang",
+            "aliases": ["ArtLang", "artlang"],
+            "extensions": [".art"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "artlang",
+            "scopeName": "source.artlang",
+            "path": "./syntaxes/artlang.tmLanguage.json"
+        }]
+    }
+}

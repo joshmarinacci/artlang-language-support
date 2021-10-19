@@ -1,0 +1,203 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ArtLang",
+	"patterns": [
+		{
+			"include": "#statements"
+		},
+		{
+			"include": "#directives"
+		}
+	],
+	"repository": {
+		"directives": {
+			"patterns": [
+				{
+					"name": "keyword.control.artlang",
+					"match": "\\b\\@[_$[:alpha:]][_$[:alnum:]]*)\\b"
+				}
+			]
+		},
+		"statements": {
+			"patterns": [
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#constants"
+				},
+				{
+					"include": "#functions"
+				},
+				{
+					"include": "#list"
+				},
+				{
+					"include": "#numeric-literal"
+				},
+				{
+					"include": "#operators"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.artlang",
+					"match": "\\b(if|while|for|return|var)\\b"
+				}
+			]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash",
+					"match": "//.*$"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language",
+					"match": "(true|false)"
+				},
+				{
+					"name": "constant.other",
+					"match": "(RED|GREEN|BLUE|BLACK|YELLOW)"
+				}
+			]
+		},
+		"functions": {
+			"name": "meta.function.js",
+			"comment": "foo",
+			"begin": "\\b(fun\\b)(?:(?:\\s+|(?<=\\*))([_$[:alpha:]][_$[:alnum:]]*))?\\s*",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.type.function.js"
+				},
+				"2": {
+					"name": "entity.name.function.js"
+				}
+			},
+			"end": "(?=;|\\})|(?<=\\})",
+			"patterns": [
+				{
+					"include": "#decl-block"
+				}
+			]
+		},
+		"decl-block": {
+			"name": "meta.block.js",
+			"begin": "\\{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.block.js"
+				}
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.block.js"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#statements"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.comparison.js",
+					"match": "==|!="
+				},
+				{
+					"name": "keyword.operator.relational.js",
+					"match": "<=|>=|<>|<|>"
+				},
+				{
+					"name": "keyword.operator.logical.js",
+					"match": "not|and|or"
+				},
+				{
+					"name": "keyword.operator.assignment.js",
+					"match": "\\:="
+				},
+				{
+					"name": "keyword.operator.arithmetic.js",
+					"match": "mod|\\*|/|-|\\+"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.artlang",
+					"match": "\".*\""
+				},
+				{
+					"name": "string.quoted.single.artlang",
+					"match": "'.*'"
+				},
+				{
+					"name": "constant.character.escape.artlang",
+					"match": "\\\\."
+				}
+			]
+		},
+		"expression": {},
+		"list": {
+			"begin": "\\[",
+			"end": "\\]",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.list.begin.artlang"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.list.end.artlang"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#expression"
+				}
+			]
+		},
+		"numeric-literal": {
+			"patterns": [
+				{
+					"name": "constant.numeric.hex.js",
+					"match": "\\b(?<!\\$)0(x|X)[0-9a-fA-F]+\\b(?!\\$)"
+				},
+				{
+					"match": "\\b[0-9]+(\\.[0-9]+)?",
+					"captures": {
+						"0": {
+							"name": "constant.numeric.decimal.js"
+						},
+						"1": {
+							"name": "meta.delimiter.decimal.period.js"
+						},
+						"2": {
+							"name": "meta.delimiter.decimal.period.js"
+						},
+						"3": {
+							"name": "meta.delimiter.decimal.period.js"
+						}
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.artlang"
+}
